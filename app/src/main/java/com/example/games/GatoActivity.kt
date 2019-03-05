@@ -22,6 +22,8 @@ class GatoActivity : AppCompatActivity() {
     var player = 1;
     var p1 = ArrayList<Int>()
     var p2 = ArrayList<Int>()
+    var tablero = Tablero()
+    var jugadorAutomatic = JugadorAutomatic(tablero)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +33,7 @@ class GatoActivity : AppCompatActivity() {
         *
         * asigna a tu JugadorAutomatic la Ficha con la que juega.
         * * */
+        jugadorAutomatic.miFicha = Ficha.BOLA
     }
 
     fun gameOn(buttonCode:Int, selectedButton:Button){

@@ -1,5 +1,8 @@
 package com.example.games
 
+import kotlin.math.max
+import kotlin.math.min
+
 inline fun<reified Celda > matrix2d(ancho: Int,
                                     alto: Int,
                                     noinline  param: (Int) -> Celda ): Array<Array<Celda>>
@@ -82,9 +85,10 @@ class Tablero{
    * */
     fun gano(player: Ficha): Boolean {
         var win  = false
-
-
-
+        if(JugadorAutomatic(this).evaluacion() == 1)
+        {
+            win = true
+        }
         return win
     }
     /*
@@ -99,11 +103,27 @@ class Tablero{
 * Completa: setTablero y setFecha, en setFicha utiliza un when
 * */
     fun setTablero( p1: ArrayList<Int>,  p2: ArrayList<Int>){
-
+        for(c in p1){
+            setFicha(c, ficha = Ficha.CRUZ)
+        }
+        for(c in p2){
+            setFicha(c, ficha = Ficha.BOLA)
+        }
     }
 
     fun setFicha(posicion: Int,ficha: Ficha ){
+        when(posicion){
+            1 -> {celdas[0][0] = Celda(0,0, ficha)}
+            2 -> {celdas[0][1] = Celda(0,1, ficha)}
+            3 -> {celdas[0][2] = Celda(0,2, ficha)}
+            4 -> {celdas[1][0] = Celda(1,0, ficha)}
+            5 -> {celdas[1][1] = Celda(1,1, ficha)}
+            6 -> {celdas[1][2] = Celda(1,2, ficha)}
+            7 -> {celdas[2][0] = Celda(2,0, ficha)}
+            8 -> {celdas[2][1] = Celda(2,1, ficha)}
+            9 -> {celdas[2][2] = Celda(2,2, ficha)}
 
+        }
     }
 
 }
@@ -165,6 +185,7 @@ class JugadorAutomatic(tablero: Tablero) {
 
                     * */
                     calificacionActual = 0
+                    calificacionActual = max(calificacionActual, minimax(profundidad-1, jugador)[0])
                     if(calificacionActual > mejorCalificacion) {
                         mejorCalificacion = calificacionActual
                         mejorRenglon = it[0]
@@ -180,6 +201,7 @@ class JugadorAutomatic(tablero: Tablero) {
 
                     * */
                     calificacionActual = 0
+                    calificacionActual = min(calificacionActual, minimax(profundidad-1, jugador)[0])
                     if(calificacionActual < mejorCalificacion) {
                         mejorCalificacion = calificacionActual
                         mejorRenglon = it[0]
