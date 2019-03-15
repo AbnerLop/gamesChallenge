@@ -94,8 +94,8 @@ class GatoActivity : AppCompatActivity() {
    Llama a la función de "move" utilzando un Handler().postDelayed de 1 segundo
 
     * */
-        handler.postDelayed(move, 1000);
-
+        val runnable = Runnable { move() }
+        handler.postDelayed(runnable, 1000);
 
 
        if (andTheWinnerIs(p1) ){
@@ -141,11 +141,6 @@ class GatoActivity : AppCompatActivity() {
         gameOn(numFicha, boton);
     }
 
-    object move : Runnable{
-        override fun run() {
-
-        }
-    }
 
 
 }
