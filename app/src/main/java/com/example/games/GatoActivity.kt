@@ -23,7 +23,8 @@ class GatoActivity : AppCompatActivity() {
     var p1 = ArrayList<Int>()
     var p2 = ArrayList<Int>()
     var tablero = Tablero()
-    var jugadorAutomatic = JugadorAutomatic(tablero)
+    var jugadorAutomatico = JugadorAutomatic(tablero)
+    var handler = Handler();
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,7 +34,7 @@ class GatoActivity : AppCompatActivity() {
         *
         * asigna a tu JugadorAutomatic la Ficha con la que juega.
         * * */
-        jugadorAutomatic.miFicha = Ficha.BOLA
+        jugadorAutomatico.miFicha = Ficha.BOLA
     }
 
     fun gameOn(buttonCode:Int, selectedButton:Button){
@@ -70,11 +71,6 @@ class GatoActivity : AppCompatActivity() {
 
     }
 
-
-
-
-
-
     fun select(view: View) {
         val selectedButton = view as Button
         var buttonCode = 0
@@ -98,6 +94,7 @@ class GatoActivity : AppCompatActivity() {
    Llama a la función de "move" utilzando un Handler().postDelayed de 1 segundo
 
     * */
+        handler.postDelayed(move, 1000);
 
 
 
@@ -122,9 +119,9 @@ class GatoActivity : AppCompatActivity() {
         2. el Button correspondiente con la interfaz
 
      * */
-    fun nextFicha(renglon : Int, columna : Int) {
-        var pair = "NOT implemented"
-
+    fun nextFicha(renglon : Int, columna : Int): Pair<Int, Button> {
+        var (a,b) = Pair(1, "a");
+        return Pair(1, findViewById(R.id.button))
     }
 
     /*
@@ -137,8 +134,18 @@ class GatoActivity : AppCompatActivity() {
     4. Manda el pair a gameOn como corresponde
 
      * */
-
     fun move(){
-
+        jugadorAutomatico.tablero.setTablero(p1,p2);
+        var siguienteMovimiento = jugadorAutomatico.calculaMovimiento();
+        var (numFicha, boton) = nextFicha(siguienteMovimiento[0], siguienteMovimiento[1]);
+        gameOn(numFicha, boton);
     }
+
+    object move : Runnable{
+        override fun run() {
+
+        }
+    }
+
+
 }

@@ -152,8 +152,8 @@ class JugadorAutomatic(tablero: Tablero) {
             else -> Ficha.CRUZ
         }
     }
-
-    fun calculaMovimiento(): Array<Int>? {
+    //?
+    fun calculaMovimiento(): Array<Int> {
         val resultado = minimax(7, miFicha)
         tablero.print()
         return arrayOf(resultado[1], resultado[2])
