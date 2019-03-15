@@ -95,7 +95,7 @@ class GatoActivity : AppCompatActivity() {
 
     * */
         val runnable = Runnable { move() }
-        handler.postDelayed(runnable, 1000);
+        handler.postDelayed(runnable, 1000)
 
 
        if (andTheWinnerIs(p1) ){
@@ -120,8 +120,54 @@ class GatoActivity : AppCompatActivity() {
 
      * */
     fun nextFicha(renglon : Int, columna : Int): Pair<Int, Button> {
-        var (a,b) = Pair(1, "a");
-        return Pair(1, findViewById(R.id.button))
+        var numFicha = 0
+        var boton = findViewById<Button>(R.id.button)
+        when(renglon){
+            0 -> when(columna){
+                0 -> {
+                    numFicha = 1
+                    boton = findViewById(R.id.button)
+                }
+                1 -> {
+                    numFicha = 2
+                    boton = findViewById(R.id.button2)
+                }
+                2 -> {
+                    numFicha = 3
+                    boton = findViewById(R.id.button3)
+                }
+            }
+            1 -> when(columna){
+                0 -> {
+                    numFicha = 4
+                    boton = findViewById(R.id.button4)
+                }
+                1 -> {
+                    numFicha = 5
+                    boton = findViewById(R.id.button5)
+                }
+                2 -> {
+                    numFicha = 6
+                    boton = findViewById(R.id.button6)
+                }
+            }
+            2 -> when(columna){
+                0 -> {
+                    numFicha = 7
+                    boton = findViewById(R.id.button7)
+                }
+                1 -> {
+                    numFicha = 8
+                    boton = findViewById(R.id.button8)
+                }
+                2 -> {
+                    numFicha = 9
+                    boton = findViewById(R.id.button9)
+                }
+            }
+        }
+
+        return Pair(numFicha, boton)
     }
 
     /*
@@ -137,10 +183,9 @@ class GatoActivity : AppCompatActivity() {
     fun move(){
         jugadorAutomatico.tablero.setTablero(p1,p2);
         var siguienteMovimiento = jugadorAutomatico.calculaMovimiento();
-        var (numFicha, boton) = nextFicha(siguienteMovimiento[0], siguienteMovimiento[1]);
+        var (numFicha, boton) = nextFicha(siguienteMovimiento[0], siguienteMovimiento[1])
         gameOn(numFicha, boton);
     }
-
 
 
 }
