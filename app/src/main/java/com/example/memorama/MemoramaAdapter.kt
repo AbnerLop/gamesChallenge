@@ -30,7 +30,7 @@ class MemoramaAdapter(val chips: ArrayList<Chip>):
 
         init {
             item.setOnClickListener {
-                imageView.setImageResource(R.drawable.rocket)
+                imageView.setImageResource(R.drawable.notpressed)
             }
         }
     }
