@@ -23,18 +23,18 @@ class MemoramaActivity : AppCompatActivity() {
 
     var cardsArray = ArrayList<Int>()
 
-    var image101 = R.drawable.ic_image102
+    var image101 = R.drawable.ic_image101
     var image102 = R.drawable.ic_image102
-    var image103 = R.drawable.ic_image102
-    var image104 = R.drawable.ic_image103
-    var image105 = R.drawable.ic_image103
-    var image106 = R.drawable.ic_image103
-    var image201 = R.drawable.ic_image104
-    var image202 = R.drawable.ic_image104
-    var image203 = R.drawable.ic_image105
-    var image204 = R.drawable.ic_image105
-    var image205 = R.drawable.ic_image106
-    var image206 = R.drawable.ic_image106
+    var image103 = R.drawable.ic_image103
+    var image104 = R.drawable.ic_image104
+    var image105 = R.drawable.ic_image105
+    var image106 = R.drawable.ic_image106
+    var image201 = R.drawable.ic_image201
+    var image202 = R.drawable.ic_image202
+    var image203 = R.drawable.ic_image203
+    var image204 = R.drawable.ic_image204
+    var image205 = R.drawable.ic_image205
+    var image206 = R.drawable.ic_image206
 
     var cardNumber = 1
     var clickedFirst = 0
